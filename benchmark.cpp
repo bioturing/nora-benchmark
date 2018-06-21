@@ -180,6 +180,7 @@ void scoring(const std::vector<double> &t_rank, const std::vector<double> &i_ran
 	     const std::vector<double> &truth, const std::vector<double> &input)
 {
 	int max_fp, max_fn, n_fn, n_fp, i, n = truth.size();
+	double tpm_fn = 0, tpm_fp = 0;
 
 	fprintf(stdout, "Spearman:\t\t%.6lf\n", pearson(t_rank, i_rank, n));
 	fprintf(stdout, "Pearson:\t\t%.6lf\n", pearson(truth, input, n));
@@ -193,11 +194,13 @@ void scoring(const std::vector<double> &t_rank, const std::vector<double> &i_ran
 			if (max_fn < 0 || truth[i] > truth[max_fn])
 				max_fn = i;
 			++n_fn;
+			tpm_fn += truth[i];
 		/* false positive */
 		} else if (truth[i] <= EPSILON && input[i] > EPSILON) {	
 			if (max_fp < 0 || input[i] > input[max_fp])
 				max_fp = i;
 			++n_fp;
+			tpm_fp += input[i];
 		}
 	}
 
@@ -205,6 +208,8 @@ void scoring(const std::vector<double> &t_rank, const std::vector<double> &i_ran
 	fprintf(stdout, "False positive:\t\t%d (%.2f%%)\n", n_fp, 100.0 * n_fp / n);
 	fprintf(stdout, "Max false negative:\t%lg\n", truth[max_fn]);
 	fprintf(stdout, "Max false positive:\t%lg\n", input[max_fp]);
+	fprintf(stdout, "Total false negative tpm:\t%lg\n", tpm_fn);
+	fprintf(stdout, "Total false positive tpm:\t%lg\n", tpm_fp);
 }
 
 void print_usage()
