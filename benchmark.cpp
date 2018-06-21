@@ -184,7 +184,7 @@ void scoring(const std::vector<double> &t_rank, const std::vector<double> &i_ran
 	fprintf(stdout, "Spearman:\t\t%.6lf\n", pearson(t_rank, i_rank, n));
 	fprintf(stdout, "Pearson:\t\t%.6lf\n", pearson(truth, input, n));
 	fprintf(stdout, "Log-pearson:\t\t%.6lf\n", log_pearson(truth, input, n));
-	fprintf(stdout, "MAE(ashin):\t\t%.6lf\n", mae(truth, input, n));	
+	fprintf(stdout, "MAE(asinh):\t\t%.6lf\n", mae(truth, input, n));	
 
 	max_fp = -1, max_fn = -1, n_fn = 0, n_fp = 0;
 	for (i = 0; i < n; i++) {
