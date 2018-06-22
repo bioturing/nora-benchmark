@@ -97,10 +97,11 @@ do
 	if [ -f sim_${i}_1.fq ] ; then
 		./runSingleEnd.sh sim_${i}_1.fq ./result/sim_single${i} 180.5069 52.54896
 done
+# 180.5069 and 52.54896 are the mean fragment length and standard deviation, respectively. 
 ````
-tool calculates the correlation between two
-transcript expression files. This tool will output some stats:
-  - Spearman: spearman correlation between tpm values
+Given the known truth tpm, we use the following metrics for evaluations:
+
+  - Spearman: spearman's rank correlation between tpm values
   - Pearson: pearson correlation between tpm values
   - Log-pearson: pearson correlation between log-transformed tpm values
   - MAE(asinh): mean absolute error of asinh-transformed tpm value
@@ -108,6 +109,8 @@ transcript expression files. This tool will output some stats:
   - False negative: the number of expressed transcripts but predicted to be unexpressed by the program
   - Max false neg: the maximum tpm value of the transcripts but predicted to be unexpressed by the program
   - Max false pos: the maximum predicted tpm value of the unexpressed transcripts
+  
+ 
 
 Spearman, pearson, log-pearson is calculated base on SMC-RNA-Challange evaluation script (https://github.com/Sage-Bionetworks/SMC-RNA-Challenge)
 
