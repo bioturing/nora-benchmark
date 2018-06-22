@@ -150,7 +150,7 @@ You can use this command to convert Nora output file to this format:
 
 # Results
 
-The results are summarized in https://bioturing.com/nora 
+The results are summarized in https://bioturing.com/nora#benchmark-result  
 
 # Contacts
 
