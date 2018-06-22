@@ -43,8 +43,43 @@ $mkdir index
 $rsem-prepare-reference --gtf data/Homo_sapiens.GRCh38.80.gtf data/Homo_sapiens.GRCh38.dna.primary_assembly.fa ./index/grch38
 ```
 
+Download the transcript abundances and error profiles for the simulated data from Kallisto's github. These were based on the quantification of sample NA12716_7 from the GEUAVDIS dataset.
+```
+cd ..
+mkdir NA12716_7
+cd NA12716_7
+$wget https://raw.githubusercontent.com/pachterlab/kallisto_paper_analysis/nbt/simulations/NA12716_7/rsem/out.stat/out.model
+$wget https://raw.githubusercontent.com/pachterlab/kallisto_paper_analysis/nbt/simulations/NA12716_7/rsem/out.isoforms.results
+```
 
-We use Kallisto's benchmark sing 20 simulated data sets generated from Kallisto paper (using this script), and the most recent benchmark data from SMC-RNA DREAM challenge.
+Generate simulated data 
+
+```
+cd ..
+for NUM in {1..20};
+do
+        rsem-simulate-reads index/grch38 NA12716_7/out.model NA12716_7/out.isoforms.results 0.0 30000000 sim_$NUM --seed $NUM
+done
+```
+Download, compile, and put the correct binary versions of Salmon, Kallisto, Hera, Nora, Bowtie2, STAR into the correct executable paths. 
+
+Generate index files for each tool:
+
+```
+mkdir ./index/star 
+GENOME_GTF=data/Homo_sapiens.GRCh38.80.gtf
+GENOME_FASTA=data/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+
+rsem-prepare-reference --gtf $GENOME_GTF --star -p 32 $GENOME_FASTA ./index/star/grch38
+mkdir ./index/nora
+nora index -g $GENOME_FASTA -t $GENOME_GTF -p genome -o ./index/nora/
+mkdir ./index/hera
+hera_build --fasta $GENOME_FASTA --gtf $GENOME_GTF --outdir ./index/hera/grch38
+mkdir ./index/rsem-bowtie
+rsem-prepare-reference --gtf $GENOME_GTF --bowtie2 -p 32 $GENOME_FASTA ./index/rsem/grch38
+salmon index --index ./index/salmon --transcripts ./index/rsem/grch38.transcripts.fa
+kallisto index -i ./index/kallisto ./index/rsem/grch38.transcripts.fa 
+```
 
 
 
