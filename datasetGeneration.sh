@@ -1,6 +1,7 @@
 
 ########################################################################
-# Generate simulations
+# Generate simulations. This code follow Kallisto's script to generate simulated
+# data: https://github.com/pachterlab/kallisto_paper_analysis/blob/nbt/simulations/Snakefile
 ########################################################################
 
 mkdir sim
