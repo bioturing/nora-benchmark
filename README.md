@@ -1,4 +1,4 @@
-## Overview
+# Overview
 This repository contains benchmark scripts for transcript quantification tools. If you want to add your tool or any additional data sets into this benchmark, please create a pull request or submit a github issue. 
 
 - Bowtie2 + RSEM (Bowtie2 version v2.3.4.1, RSEM version v1.3.0)
@@ -8,15 +8,15 @@ This repository contains benchmark scripts for transcript quantification tools. 
 - Hera (Version 1.2)
 - Nora (Version 1.0.3 https://nora.bioturing.com/) 
 
-## Data sets: 
+# Data sets: 
 
 We use simulated benchmark data in Kallisto's paper (Bray et al., 2016). In particular, this data set ''contains 20 RNA-Seq simulations generated with the program RSEM. The transcript abundances and error profiles for the
 simulated data were based on the quantification of sample NA12716_7 from the 
 GEUAVDIS dataset, and to accord with GEUVADIS samples the simulations consisted
 of 30 million reads.'' Below are the data preparation steps. 
 
-### Generate Simulated Data
-# Install RSEM
+## Generate Simulated Data
+### Install RSEM
 ```shell
 cd 
 wget https://github.com/deweylab/RSEM/archive/v1.3.0.tar.gz
@@ -25,7 +25,7 @@ cd RSEM-1.3.0
 make
 export PATH=$PATH:~/RSEM-1.3.0
 ```
-Download the reference and gene anotation files. 
+### Download the reference and gene anotation files. 
 ```shell
 cd
 mkdir simulation
@@ -36,7 +36,7 @@ wget ftp://ftp.ensembl.org/pub/release-80/gtf/homo_sapiens/Homo_sapiens.GRCh38.8
 gunzip Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
 gunzip Homo_sapiens.GRCh38.80.gtf.gz
 ```
-Create index files
+### Create index files
 ```shell
 cd ..
 mkdir index
@@ -52,7 +52,7 @@ wget https://raw.githubusercontent.com/pachterlab/kallisto_paper_analysis/nbt/si
 wget https://raw.githubusercontent.com/pachterlab/kallisto_paper_analysis/nbt/simulations/NA12716_7/rsem/out.isoforms.results
 ```
 
-Generate simulated data 
+### Generate simulated data 
 
 ```shell
 cd ..
@@ -61,6 +61,7 @@ do
         rsem-simulate-reads index/grch38 NA12716_7/out.model NA12716_7/out.isoforms.results 0.0 30000000 sim_$NUM --seed $NUM
 done
 ```
+## Run transcript quantification tools
 Download, compile, and put the correct binary versions of Salmon, Kallisto, Hera, Nora, Bowtie2, STAR into the correct executable paths. 
 
 Generate index files for each tool:
@@ -99,6 +100,7 @@ do
 done
 # 180.5069 and 52.54896 are the mean fragment length and standard deviation, respectively. 
 ````
+# Evaluations
 Given the known truth tpm, we use the following metrics for evaluations:
 
   - Spearman: spearman's rank correlation between tpm values
