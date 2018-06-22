@@ -134,9 +134,8 @@ Usage: ./benchmark TRUTH_FILE INPUT_FILE
 ```
 
 ```shell
-Truth file and input must be a tsv (tab-separated) file — with no header. Containing two
-columns mapping of each transcript present in the reference to the corresponding tpm values
-(the first column is a transcript and the second is the corresponding tpm value).
+Truth file and input must be a tsv (tab-separated) file — with no header, containing two
+columns. The first column is transcript ID and the second is the corresponding tpm value).
 
 ENST00000000233    28.410000
 ENST00000000412    0.000000
@@ -150,6 +149,7 @@ You can use this command to convert Nora output file to this format:
 ```
 
 # Results
+
 The results are summarized in https://bioturing.com/nora 
 
 # Contacts
