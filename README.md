@@ -81,7 +81,7 @@ salmon index --index ./index/salmon --transcripts ./index/rsem/grch38.transcript
 kallisto index -i ./index/kallisto ./index/rsem/grch38.transcripts.fa 
 ```
 
-Running paired-end mode
+Run paired-end mode
 ```shell
 for i in {1..20}
 do
@@ -90,7 +90,14 @@ do
 	fi
 done
 ```
-
+Run single-end mode
+```shell
+for i in {1..20}
+do
+	if [ -f sim_${i}_1.fq ] ; then
+		./runSingleEnd.sh sim_${i}_1.fq ./result/sim_single${i} 180.5069 52.54896
+done
+````
 tool calculates the correlation between two
 transcript expression files. This tool will output some stats:
   - Spearman: spearman correlation between tpm values
