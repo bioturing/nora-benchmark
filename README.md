@@ -13,8 +13,16 @@ This repository contains benchmark scripts for transcript quantification tools. 
 We use simulated benchmark data in Kallisto's paper (Bray et al., 2016). In particular, this data set ''contains 20 RNA-Seq simulations generated with the program RSEM. The transcript abundances and error profiles for the
 simulated data were based on the quantification of sample NA12716_7 from the 
 GEUAVDIS dataset, and to accord with GEUVADIS samples the simulations consisted
-of 30 million reads.'' To generate the data, use the following command.
+of 30 million reads.'' Below are the data preparation steps. 
 
+### Create RSEM index 
+
+```
+$mkdir simulation
+$mkdir simulation/data
+$cd simulation/data
+$wget ftp://ftp.ensembl.org/pub/release-80/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+$wget ftp://ftp.ensembl.org/pub/release-80/gtf/homo_sapiens/Homo_sapiens.GRCh38.80.gtf.gz
 ```
 
 
