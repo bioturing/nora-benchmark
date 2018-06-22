@@ -43,7 +43,7 @@ mkdir index
 rsem-prepare-reference --gtf data/Homo_sapiens.GRCh38.80.gtf data/Homo_sapiens.GRCh38.dna.primary_assembly.fa ./index/grch38
 ```
 
-Download the transcript abundances and error profiles for the simulated data from Kallisto's github. These were based on the quantification of sample NA12716_7 from the GEUAVDIS dataset.
+Download the transcript abundances and error profiles of the simulated data from Kallisto's github. These were based on the quantification of sample NA12716_7 from the GEUAVDIS dataset.
 ```shell
 cd ..
 mkdir NA12716_7
