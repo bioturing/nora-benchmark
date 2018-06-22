@@ -82,6 +82,14 @@ kallisto index -i ./index/kallisto ./index/rsem/grch38.transcripts.fa
 ```
 
 Running paired-end mode
+```shell
+for i in {1..20}
+do
+	if [ -f sim_${i}_1.fq ] && [ -f sim_${i}_2.fq ] ; then
+		./runPairedEnd.sh sim_${i}_1.fq sim_${i}_2.fq ./result/sim${i}
+	fi
+done
+```
 
 tool calculates the correlation between two
 transcript expression files. This tool will output some stats:
