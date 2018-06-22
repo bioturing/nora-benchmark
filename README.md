@@ -121,7 +121,7 @@ Spearman, pearson, log-pearson is calculated base on SMC-RNA-Challange evaluatio
 ```shell
 git clone https://github.com/bioturing/nora-benchmark
 cd nora-benchmark
-g++ benchmark.c -O2 -o benchmark
+g++ benchmark.cpp -O2 -o benchmark
 ```
 
 ## Usage
