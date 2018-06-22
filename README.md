@@ -1,5 +1,5 @@
 ## Overview
-This repository contains benchmark scripts for transcript quantification tools. If you want to add your tool into this benchmark, please create a pull request or submit a github issue. 
+This repository contains benchmark scripts for transcript quantification tools. If you want to add your tool or any additional data sets into this benchmark, please create a pull request or submit a github issue. 
 
 - Bowtie2 + RSEM (Bowtie2 version v2.3.4.1, RSEM version v1.3.0)
 - STAR + RSEM (STAR version 2.6.0c, RSEM version v1.3.0)
