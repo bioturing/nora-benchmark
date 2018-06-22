@@ -70,16 +70,16 @@ Generate index files for each tool:
 GENOME_GTF=data/Homo_sapiens.GRCh38.80.gtf
 GENOME_FASTA=data/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 
-mkdir ./index/star_rsem
-rsem-prepare-reference --gtf $GENOME_GTF --star -p 32 $GENOME_FASTA ./index/star_rsem/grch38
-mkdir ./index/nora
-Nora index -g $GENOME_FASTA -t $GENOME_GTF -p genome -o ./index/nora/
-mkdir ./index/hera
-hera_build --fasta $GENOME_FASTA --gtf $GENOME_GTF --outdir ./index/hera/grch38
-mkdir ./index/bowtie2_rsem
-rsem-prepare-reference --gtf $GENOME_GTF --bowtie2 -p 32 $GENOME_FASTA ./index/bowtie2_rsem/grch38
-salmon index --index ./index/salmon --transcripts ./index/rsem/grch38.transcripts.fa
-kallisto index -i ./index/kallisto ./index/rsem/grch38.transcripts.fa 
+mkdir index/star_rsem
+rsem-prepare-reference --gtf $GENOME_GTF --star -p 32 $GENOME_FASTA index/star_rsem/grch38
+mkdir index/nora
+Nora index -g $GENOME_FASTA -t $GENOME_GTF -p grch38 -o index/nora
+mkdir index/hera
+hera_build --fasta $GENOME_FASTA --gtf $GENOME_GTF --outdir index/hera/grch38
+mkdir index/bowtie2_rsem
+rsem-prepare-reference --gtf $GENOME_GTF --bowtie2 -p 32 $GENOME_FASTA index/bowtie2_rsem/grch38
+salmon index --index index/salmon --transcripts index/rsem/grch38.transcripts.fa
+kallisto index -i index/kallisto index/rsem/grch38.transcripts.fa 
 ```
 
 Run paired-end mode
@@ -87,7 +87,7 @@ Run paired-end mode
 for i in {1..20}
 do
 	if [ -f sim_${i}_1.fq ] && [ -f sim_${i}_2.fq ] ; then
-		./runPairedEnd.sh sim_${i}_1.fq sim_${i}_2.fq ./result/sim${i}
+		./runPairedEnd.sh sim_${i}_1.fq sim_${i}_2.fq result/sim${i}
 	fi
 done
 ```
@@ -96,7 +96,7 @@ Run single-end mode
 for i in {1..20}
 do
 	if [ -f sim_${i}_1.fq ] ; then
-		./runSingleEnd.sh sim_${i}_1.fq ./result/sim_single${i} 180.5069 52.54896
+		./runSingleEnd.sh sim_${i}_1.fq result/sim_single${i} 180.5069 52.54896
 done
 # 180.5069 and 52.54896 are the mean fragment length and standard deviation, respectively. 
 ````
