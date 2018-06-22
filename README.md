@@ -16,7 +16,16 @@ GEUAVDIS dataset, and to accord with GEUVADIS samples the simulations consisted
 of 30 million reads.'' Below are the data preparation steps. 
 
 ### Create RSEM index 
-
+Install RSEM
+```
+$cd 
+$wget https://github.com/deweylab/RSEM/archive/v1.3.0.tar.gz
+$tar -xvf v1.3.0.tar.gz
+$cd RSEM-1.3.0
+$make
+$export PATH=$PATH:~/RSEM-1.3.0
+```
+Download reference and annotated transcript gtf files. 
 ```
 $mkdir simulation
 $mkdir simulation/data
