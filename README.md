@@ -110,7 +110,9 @@ Given the known truth tpm, we use the following metrics for evaluations:
   - Max false neg: the maximum tpm value of the transcripts but predicted to be unexpressed by the program
   - Max false pos: the maximum predicted tpm value of the unexpressed transcripts
   
- 
+ To evaluate, we first have to prepare the truth tpm and estimated tpm files. Each file has 2 columns, transcript id and tpm value without headers.
+
+Compile benchmark.cpp then run ./benchmark <truth_file> <estimated_file>
 
 Spearman, pearson, log-pearson is calculated base on SMC-RNA-Challange evaluation script (https://github.com/Sage-Bionetworks/SMC-RNA-Challenge)
 
