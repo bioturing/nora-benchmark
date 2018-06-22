@@ -97,6 +97,7 @@ for i in {1..20}
 do
 	if [ -f sim_${i}_1.fq ] ; then
 		./runSingleEnd.sh sim_${i}_1.fq result/sim_single${i} 180.5069 52.54896
+	fi
 done
 # 180.5069 and 52.54896 are the mean fragment length and standard deviation, respectively. 
 ````
