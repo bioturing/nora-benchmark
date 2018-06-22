@@ -78,8 +78,8 @@ mkdir index/hera
 hera_build --fasta $GENOME_FASTA --gtf $GENOME_GTF --outdir index/hera/grch38
 mkdir index/bowtie2_rsem
 rsem-prepare-reference --gtf $GENOME_GTF --bowtie2 -p 32 $GENOME_FASTA index/bowtie2_rsem/grch38
-salmon index --index index/salmon --transcripts index/rsem/grch38.transcripts.fa
-kallisto index -i index/kallisto index/rsem/grch38.transcripts.fa 
+salmon index --index index/salmon --transcripts index/bowtie2_rsem/grch38.transcripts.fa
+kallisto index -i index/kallisto index/bowtie2_rsem/grch38.transcripts.fa 
 ```
 
 Run paired-end mode
