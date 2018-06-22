@@ -1,6 +1,29 @@
 ## Overview
+This repository contains benchmark scripts for transcript quantification tools. Here is the list of the tools that used in this benchmark. If you want to add your tool into this benchmark, please just submit an github issue. 
 
-Developed by BioTuring (www.bioturing.com), this tool calculates the correlation between two
+- Bowtie2 + RSEM (Bowtie2 version v2.3.4.1, RSEM version v1.3.0)
+- STAR + RSEM (STAR version 2.6.0c, RSEM version v1.3.0)
+- Kallisto (Version 0.44.0)
+- Salmon (Version 0.9.1)
+- Hera (Version 1.2)
+- Nora (Version 1.0.3 https://nora.bioturing.com/) 
+
+## Data sets: 
+
+We use simulated benchmark data in Kallisto's paper (Bray et al., 2016). In particular, this data set ''contains 20 RNA-Seq simulations generated with the program RSEM. The transcript abundances and error profiles for the
+simulated data were based on the quantification of sample NA12716_7 from the 
+GEUAVDIS dataset, and to accord with GEUVADIS samples the simulations consisted
+of 30 million reads.'' To generate the data, use the following command.
+
+```
+
+
+
+We use Kallisto's benchmark sing 20 simulated data sets generated from Kallisto paper (using this script), and the most recent benchmark data from SMC-RNA DREAM challenge.
+
+
+
+tool calculates the correlation between two
 transcript expression files. This tool will output some stats:
   - Spearman: spearman correlation between tpm values
   - Pearson: pearson correlation between tpm values
