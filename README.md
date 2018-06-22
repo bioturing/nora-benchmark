@@ -15,8 +15,8 @@ simulated data were based on the quantification of sample NA12716_7 from the
 GEUAVDIS dataset, and to accord with GEUVADIS samples the simulations consisted
 of 30 million reads.'' Below are the data preparation steps. 
 
-### Create RSEM index 
-Install RSEM
+### Generate Simulated Data
+# Install RSEM
 ```shell
 cd 
 wget https://github.com/deweylab/RSEM/archive/v1.3.0.tar.gz
