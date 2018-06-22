@@ -25,15 +25,23 @@ $cd RSEM-1.3.0
 $make
 $export PATH=$PATH:~/RSEM-1.3.0
 ```
-Download reference and annotated transcript gtf files. 
+Download the reference and gene anotation files. 
 ```
+$cd
 $mkdir simulation
 $mkdir simulation/data
 $cd simulation/data
 $wget ftp://ftp.ensembl.org/pub/release-80/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
 $wget ftp://ftp.ensembl.org/pub/release-80/gtf/homo_sapiens/Homo_sapiens.GRCh38.80.gtf.gz
+$gunzip Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+$gunzip Homo_sapiens.GRCh38.80.gtf.gz
 ```
-
+Create index files
+```
+$cd ..
+$mkdir index
+$rsem-prepare-reference --gtf data/Homo_sapiens.GRCh38.80.gtf data/Homo_sapiens.GRCh38.dna.primary_assembly.fa ./index/grch38
+```
 
 
 We use Kallisto's benchmark sing 20 simulated data sets generated from Kallisto paper (using this script), and the most recent benchmark data from SMC-RNA DREAM challenge.
