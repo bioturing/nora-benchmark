@@ -6,7 +6,7 @@ mkdir $2/star_rsem
 \time -v -o $2/star_rsem/time.txt rsem-calculate-expression --fragment-length-mean $3 --fragment-length-sd $4 --no-bam-output --star -p $THREAD $1 ./index/star_rsem/grch38 $2/star_rsem/result 2> $2/star_rsem/screen.log 
 
 mkdir $2/bowtie2_rsem
-\time -v -o $2/bowtie2_rsem/time.txt rsem-calculate-expression --fragment-length-mean $3 --fragment-length-sd $4 --no-bam-output  --bowtie2 -p $THREAD $1 $2 ./index/bowtie2_rsem/grch38 $2/bowtie2_rsem/result 2> $2/bowtie2_rsem/screen.log 
+\time -v -o $2/bowtie2_rsem/time.txt rsem-calculate-expression --fragment-length-mean $3 --fragment-length-sd $4 --no-bam-output  --bowtie2 -p $THREAD $1 ./index/bowtie2_rsem/grch38 $2/bowtie2_rsem/result 2> $2/bowtie2_rsem/screen.log 
  
 mkdir $2/kallisto
 \time -v -o  $2/kallisto/time.txt kallisto quant -i ./index/kallisto -o $2/kallisto -t $THREAD -l $3 -s $4 --single $1 2> $2/kallisto/screen.log
