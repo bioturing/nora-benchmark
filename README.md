@@ -17,7 +17,7 @@ of 30 million reads.'' Below are the data preparation steps.
 
 ### Create RSEM index 
 Install RSEM
-```
+```shell
 $cd 
 $wget https://github.com/deweylab/RSEM/archive/v1.3.0.tar.gz
 $tar -xvf v1.3.0.tar.gz
@@ -26,7 +26,7 @@ $make
 $export PATH=$PATH:~/RSEM-1.3.0
 ```
 Download the reference and gene anotation files. 
-```
+```shell
 $cd
 $mkdir simulation
 $mkdir simulation/data
@@ -37,14 +37,14 @@ $gunzip Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
 $gunzip Homo_sapiens.GRCh38.80.gtf.gz
 ```
 Create index files
-```
+```shell
 $cd ..
 $mkdir index
 $rsem-prepare-reference --gtf data/Homo_sapiens.GRCh38.80.gtf data/Homo_sapiens.GRCh38.dna.primary_assembly.fa ./index/grch38
 ```
 
 Download the transcript abundances and error profiles for the simulated data from Kallisto's github. These were based on the quantification of sample NA12716_7 from the GEUAVDIS dataset.
-```
+```shell
 cd ..
 mkdir NA12716_7
 cd NA12716_7
@@ -54,7 +54,7 @@ $wget https://raw.githubusercontent.com/pachterlab/kallisto_paper_analysis/nbt/s
 
 Generate simulated data 
 
-```
+```shell
 cd ..
 for NUM in {1..20};
 do
@@ -65,11 +65,11 @@ Download, compile, and put the correct binary versions of Salmon, Kallisto, Hera
 
 Generate index files for each tool:
 
-```
-mkdir ./index/star 
+```shell
 GENOME_GTF=data/Homo_sapiens.GRCh38.80.gtf
 GENOME_FASTA=data/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 
+mkdir ./index/star 
 rsem-prepare-reference --gtf $GENOME_GTF --star -p 32 $GENOME_FASTA ./index/star/grch38
 mkdir ./index/nora
 nora index -g $GENOME_FASTA -t $GENOME_GTF -p genome -o ./index/nora/
@@ -81,7 +81,7 @@ salmon index --index ./index/salmon --transcripts ./index/rsem/grch38.transcript
 kallisto index -i ./index/kallisto ./index/rsem/grch38.transcripts.fa 
 ```
 
-
+Running paired-end mode
 
 tool calculates the correlation between two
 transcript expression files. This tool will output some stats:
